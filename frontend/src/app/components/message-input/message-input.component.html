@@ -1,0 +1,4 @@
+<div class="messageInput">
+    <textarea [(ngModel)]="messageContent" placeholder="Écrivez votre message ici..."></textarea>
+    <button (click)="sendMessage()" [disabled]="!messageContent.trim()">Envoyer</button>
+</div>

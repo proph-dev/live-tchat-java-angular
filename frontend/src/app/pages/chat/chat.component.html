@@ -1,3 +1,29 @@
-<main>
-    <h1>Bienvenue sur la discussion</h1>
+<main class="chatContainer">
+  <div class="hero">
+    <a href="/" class="backBtn">
+      <img src="https://cdn-icons-png.flaticon.com/512/62/62069.png" alt="Flèche de retour vers l'accueil">
+      Retourner à l'accueil
+    </a>
+  </div>
+
+  <h1>Bienvenue sur la discussion</h1>
+
+  <!-- Modale de demande de nom -->
+  <div *ngIf="showNameModal" class="modal">
+    <div class="modalContent">
+      <h2>Entrez votre nom pour commencer</h2>
+      <input type="text" [(ngModel)]="username" placeholder="Votre nom" />
+      <button (click)="saveName()">Enregistrer</button>
+    </div>
+  </div>
+
+  <!-- Contenu du chat -->
+  <div *ngIf="!showNameModal">
+    <app-message-list [messages]="messages" [currentUser]="username"></app-message-list>
+    <app-message-input (messageSent)="onMessageSent($event)"></app-message-input>
+  </div>
+
+  <footer>
+    <p class="userName">Connecté en tant que : <span>{{ username }}</span></p>
+  </footer>
 </main>

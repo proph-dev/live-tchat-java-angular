@@ -1,0 +1,5 @@
+<div class="messagesContainer">
+  <div *ngFor="let message of messages" class="message" [ngClass]="{'messageSelf': isSelf(message), 'messageOther': !isSelf(message)}">
+      <strong>{{ message.sender }}:</strong> {{ message.content }}
+  </div>
+</div>
