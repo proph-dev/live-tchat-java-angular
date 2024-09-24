@@ -21,7 +21,7 @@ export class MessageInputComponent {
     const trimmedContent = this.messageContent.trim();
   
     if (trimmedContent) {
-      const sender = localStorage.getItem('name') || 'Anonyme';
+      const sender = localStorage.getItem('username') || 'Anonyme';
       const newMessage: Message = {
         sender: sender,
         content: trimmedContent,
