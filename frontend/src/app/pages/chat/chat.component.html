@@ -8,17 +8,23 @@
 
   <h1>Bienvenue sur la discussion</h1>
 
-  <!-- Modale de demande de nom -->
-  <div *ngIf="showNameModal" class="modal">
+  <!-- Modale de demande de connexion -->
+  <div *ngIf="showLoginModal" class="modal">
     <div class="modalContent">
-      <h2>Entrez votre nom pour commencer</h2>
-      <input type="text" [(ngModel)]="username" placeholder="Votre nom" />
-      <button (click)="saveName()">Enregistrer</button>
+      <h2>Connexion</h2>
+      <div class="inputsAuth">
+        <input type="email" [(ngModel)]="email" placeholder="Email" required />
+        <input type="password" [(ngModel)]="password" placeholder="Mot de passe" required />
+      </div>
+      <button (click)="login()">Se connecter</button>
+
+      <!-- Affiche le message d'erreur si errorMessage est défini -->
+      <p class="errorMessage" *ngIf="errorMessage">{{ errorMessage }}</p>
     </div>
   </div>
 
   <!-- Contenu du chat -->
-  <div *ngIf="!showNameModal">
+  <div *ngIf="!showLoginModal">
     <app-message-list [messages]="messages" [currentUser]="username"></app-message-list>
     <app-message-input (messageSent)="onMessageSent($event)"></app-message-input>
   </div>
